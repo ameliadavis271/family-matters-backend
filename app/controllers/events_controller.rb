@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 before_action :set_event, only: [:show, :destroy, :update]
+# before_action :authenticate_user
 
     def index
         # display all subscriptions
@@ -40,7 +41,7 @@ before_action :set_event, only: [:show, :destroy, :update]
     
     # strong params
     def events_params
-        params.require(:event).permit(:name, :description, :date, :time)
+        params.require(:event).permit(:name, :description, :date, :time, :user_id)
     end
 
 end
