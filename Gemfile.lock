@@ -183,8 +183,8 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
-  knock
   factory_bot_rails
+  knock
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)

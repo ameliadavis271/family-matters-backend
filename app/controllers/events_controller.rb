@@ -45,7 +45,7 @@ before_action :set_event, only: [:show, :destroy, :update]
 
     
     # strong params
-    def events_params
+    def event_params
         params.require(:event).permit(:name, :description, :date, :time, :user_id)
     end
 
