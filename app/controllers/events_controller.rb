@@ -15,7 +15,7 @@ before_action :authenticate_user
 
     def create
         # create a new family event
-        event = current_user.events.create(events_params)
+        event = current_user.events.create(event_params)
         # event.capitalize_name
         if event.save
             render status: :created
