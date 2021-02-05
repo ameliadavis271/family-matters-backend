@@ -3,6 +3,7 @@ class Event < ApplicationRecord
     validates :description, presence: true
     validates :time, presence: true
     validates :date, presence: true
+    belongs_to :user
 
     def capitalize_name
         capitalized_words = name.split(" ").each do |word|
