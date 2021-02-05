@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :events
+  get '/status', to: 'status#index'
+  get '/user', to: 'status#user'
   scope '/auth' do
-    post '/sign_up', to: 'users#create'
-    post '/sign_in', to: 'users#sign_in'
+    post '/sign-up', to: 'users#create'
+    post '/sign-in', to: 'user_token#create'
   end
 end
