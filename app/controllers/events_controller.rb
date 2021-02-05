@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 before_action :set_event, only: [:show, :destroy, :update]
-# before_action :authenticate_user
+before_action :authenticate_user
 
     def index
         # display all subscriptions
@@ -15,11 +15,12 @@ before_action :set_event, only: [:show, :destroy, :update]
 
     def create
         # create a new family event
-        event = Event.new(event_params)
+        event = current_user.events.create(events_params)
         # event.capitalize_name
         if event.save
             render status: :created
         else
+            puts event.errors.messages
             render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
         end
     end
