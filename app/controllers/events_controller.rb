@@ -14,17 +14,17 @@ before_action :set_event, only: [:show, :destroy, :update]
 
     def create
         # create a new family event
-        event = Event.new(events_params)
-        event.capitalize_name
+        event = Event.new(event_params)
+        # event.capitalize_name
         if event.save
             render status: :created
         else
-            render status: :bad_request
+            render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
     def update
-        if @event.update(update_events_params)
+        if @event.update(update_event_params)
             render status: :created
         else
             render status: :bad_request
@@ -44,11 +44,11 @@ before_action :set_event, only: [:show, :destroy, :update]
 
     
     # strong params
-    def events_params
+    def event_params
         params.require(:event).permit(:name, :description, :date, :time)
     end
 
-    def update_events_params
+    def update_event_params
         params.require(:event).permit(:name, :description, :time)
     end
 
