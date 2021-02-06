@@ -5,6 +5,7 @@ class Event < ApplicationRecord
     validates :date, presence: true
     belongs_to :family
 
+    # method to ensure capitalization of event name
     def capitalize_name
         capitalized_words = name.split(" ").each do |word|
             word.capitalize!

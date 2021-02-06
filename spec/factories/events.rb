@@ -19,5 +19,7 @@ FactoryBot.define do
         trait :invalid do
             name { nil }
         end
+
+        association :family
     end
 end
