@@ -12,6 +12,9 @@ FactoryBot.define do
         sequence :time do |n|
             "Time #{n}"
         end
+        sequence :family_id do |n|
+            "FamilyID #{n}"
+        end
 
         trait :invalid do
             name { nil }

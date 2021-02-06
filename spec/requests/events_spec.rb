@@ -17,7 +17,7 @@ RSpec.describe "Events", type: :request do
         expect(@json_response.count).to eq(2)
     end
 
-    it 'task contains the expected attributes' do
+    it 'event contains the expected attributes' do
         expect(@json_response.first).to include({
             'id' => @first_event.id,
             'name' => @first_event.name,
@@ -32,7 +32,7 @@ RSpec.describe "Events", type: :request do
       context 'when the event is valid' do
           before(:example) do
               @event_params = FactoryBot.attributes_for(:event)
-              post events_path, params: { event: @event_params }
+              post events_path, params: { event: @event_params }, headers: authenticated_header
           end
 
           it 'returns http created' do
@@ -50,7 +50,7 @@ RSpec.describe "Events", type: :request do
       context 'when the task is invalid' do
         before(:example) do  
             @event_params = FactoryBot.attributes_for(:event, :invalid)
-            post events_path, params: { event: @event_params }
+            post events_path, params: { event: @event_params }, headers: authenticated_header
             @json_response = JSON.parse(response.body)
         end
 
