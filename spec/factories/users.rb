@@ -13,5 +13,7 @@ FactoryBot.define do
             "FamilyID #{n}"
         end
         password_digest { "password" }
+
+        association :family
     end
 end
