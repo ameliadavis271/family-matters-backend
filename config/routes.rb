@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     post '/sign-up', to: 'users#create'
     post '/sign-in', to: 'user_token#create'
   end
+  get '/users/url', to: 'memories#presigned_url'
 end
