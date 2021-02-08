@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :events
   belongs_to :family
   validates :email, presence: true, uniqueness: true
   validates :family_id, presence: true

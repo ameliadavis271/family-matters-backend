@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_011601) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "family_id"
   end
-
+  
   add_foreign_key "albums", "families"
   add_foreign_key "events", "families"
   add_foreign_key "memories", "families"
