@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2021_02_08_011601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "albums", force: :cascade do |t|
-    t.string "name"
-    t.bigint "family_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["family_id"], name: "index_albums_on_family_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -59,8 +51,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_011601) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "family_id"
   end
-  
-  add_foreign_key "albums", "families"
+
   add_foreign_key "events", "families"
   add_foreign_key "memories", "families"
 end
