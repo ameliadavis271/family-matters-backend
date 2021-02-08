@@ -1,6 +1,6 @@
 class MemoriesController < ApplicationController
+  before_action :authenticate_user
   before_action :set_credentials
-  # before_action :authenticate_user
 
   def index
     @memories_links = []
