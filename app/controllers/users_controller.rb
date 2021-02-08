@@ -3,12 +3,11 @@ class UsersController < ApplicationController
   def create
     # ensures user has a family_id
     if user_params[:family_id] == ""
-      create_family
+      params[:user][:family_id] = create_family
     else
-      set_family
+      params[:user][:family_id] = (Family.where(family_id: user_params[:family_id])).ids.first
     end
-    #create user as part of family
-    @user = @family.users.create(user_params)
+    @user = User.create(user_params)
     if @user.save
       token = Knock::AuthToken.new(payload: { sub: @user.id }).token
       render json: {
@@ -37,8 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    # set user params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :family_id)
+    params.require(:user).permit(:family_id, :email, :first_name, :last_name, :password, :password_confirmation)
   end
 
   def gen_family_code
@@ -52,6 +50,7 @@ class UsersController < ApplicationController
     if @family.errors.any?
       render @family.errors, status: :unprocessable_entity
     end
+    return @family.id
   end
 
   def set_family
