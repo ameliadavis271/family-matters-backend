@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'events#index'
   get '/status', to: 'status#index'
   get '/user', to: 'status#user'
+  get '/family', to: 'status#family_id'
   scope '/auth' do
     post '/sign-up', to: 'users#create'
     post '/sign-in', to: 'user_token#create'

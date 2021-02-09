@@ -8,4 +8,9 @@ class StatusController < ApplicationController
   def user
     render json: { user: current_user.email }
   end
+
+  def family_id
+    @family = current_user.family
+    render json: { familyid: @family.family_id }
+  end
 end
